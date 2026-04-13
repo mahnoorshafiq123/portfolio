@@ -113,11 +113,11 @@ window.addEventListener('scroll', () => {
 // Add smooth hover effect to project cards
 const projectCards = document.querySelectorAll('.project-card');
 projectCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function () {
         this.style.transform = 'translateY(-8px)';
     });
 
-    card.addEventListener('mouseleave', function() {
+    card.addEventListener('mouseleave', function () {
         this.style.transform = 'translateY(0)';
     });
 });
@@ -125,11 +125,11 @@ projectCards.forEach(card => {
 // Add smooth hover effect to service cards
 const serviceCards = document.querySelectorAll('.service-card');
 serviceCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function () {
         this.style.transform = 'translateY(-8px)';
     });
 
-    card.addEventListener('mouseleave', function() {
+    card.addEventListener('mouseleave', function () {
         this.style.transform = 'translateY(0)';
     });
 });
@@ -160,7 +160,7 @@ circles.forEach(function (circle) {
     circle.y = 0;
 });
 
-window.addEventListener('mousemove', function(e) {
+window.addEventListener('mousemove', function (e) {
     coords.x = e.clientX;
     coords.y = e.clientY;
 });
@@ -191,9 +191,9 @@ animateCircles();
 // Performance optimization: Debounce scroll events
 function debounce(func, wait = 10, immediate = true) {
     let timeout;
-    return function() {
+    return function () {
         const context = this, args = arguments;
-        const later = function() {
+        const later = function () {
             timeout = null;
             if (!immediate) func.apply(context, args);
         };
@@ -235,7 +235,7 @@ window.addEventListener("mousemove", (e) => {
 document.querySelectorAll(".project-card").forEach(card => {
 
     card.addEventListener("mouseenter", () => {
-        card.style.transform = "translateY(-12px) scale(1)";
+        card.style.transform = " scale(1)";
         card.style.boxShadow = "0 20px 40px rgba(8,255,244,0.15)";
         card.style.transition = "0.3s ease";
     });
@@ -249,21 +249,40 @@ document.querySelectorAll(".project-card").forEach(card => {
 
 
 
-const text =document.querySelector('.hero-title');
-let i = 0;
+gsap.registerPlugin(ScrollTrigger);
 
-function typeEffect() {
-    const target = document.querySelector(".hero-subtitle");
-
-    if (!target) return;
-
-    target.innerHTML = text.slice(0, i);
-
-    i++;
-
-    if (i <= text.length) {
-        setTimeout(typeEffect, 80);
+// timeline for text animation
+let tl = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".hero-content",
+        start: "top 80%",
     }
-}
+});
 
-typeEffect();
+// animation
+tl.from(".hero-intro", {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    ease: "power4.out"
+})
+    .from(".hero-title .gradient-text", {
+        y: 60,
+        opacity: 0,
+        duration:1.25,
+        ease: "power4.out"
+    }, "-=0.4")
+    .from(".hero-title .white-text", {
+        y: 60,
+        opacity: 0,
+        duration:1.75,
+        ease: "power4.out"
+    }, "-=0.5")
+    .from(".hero-subtitle", {
+        y: 40,
+        opacity: 0,
+        duration: 1.75,
+        ease: "power4.out"
+    }, "-=0.5");
+
+

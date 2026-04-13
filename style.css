@@ -1,4 +1,5 @@
 /* Reset and Base Styles */
+
 @font-face {
     font-family: Inter;
     scr: url(/font/Inter-VariableFont_opsz/,wght.woff2);
@@ -112,7 +113,7 @@ body {
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: #c084fc;
+    background: #84e4fc;
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -523,10 +524,8 @@ body {
     transition: transform 0.5s ease;
 }
 
-.project-card:hover .project-image img {
-    transform: scale(1.1);
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px var(--primary)
+.project-card:hover {
+      box-shadow: 0 0 5px var(--primary)
 }
 
 .project-overlay {
