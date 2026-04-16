@@ -144,7 +144,7 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle), var(--primary), #0f172a, var(--primary), #0f172a);
+    background-image: conic-gradient(from var(--angle), var(--primary), var(--primary));
     top: 50%;
     left: 50%;
     translate: -50% -50%;
